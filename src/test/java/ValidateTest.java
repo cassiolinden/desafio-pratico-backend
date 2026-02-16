@@ -14,8 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @Feature("Validate")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ValidateTest extends BaseTest {
+    // Pré-condição
     Auth login = new Auth("admin", "password");
     HashMap<String, Object> loginBody = new HashMap<>();
+    // ----------
     Token validate = new Token();
     ApiRequestHelper request = new ApiRequestHelper();
     HashMap<String, Object> body = new HashMap<>();
