@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RoomTest extends BaseTest {
     /*
-
     Validar requisição GET /room - estrutura do payload
     Validar requisição GET /room - filtrar por datas
     Validar requisição GET /room - formato de data inválido
@@ -89,13 +88,14 @@ public class RoomTest extends BaseTest {
     void validarQuartoStatusCode(){
         response = request.get();
 
-        List<Room> roomsReturned = response.extract().response().getBody().as(Room.class).getRooms();
+        List<Room> roomsReturned = response.extract().as(Room.class).getRooms();
+
         response.assertThat().statusCode(200);
         
         assertEquals(rooms.get(0).toString(), roomsReturned.get(0).toString());
         assertEquals(rooms.get(1).toString(), roomsReturned.get(1).toString());
         assertEquals(rooms.get(2).toString(), roomsReturned.get(2).toString());
 
-
+        request.assertSchema(response, "room-schema.json");
     }
 }

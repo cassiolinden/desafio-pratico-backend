@@ -43,7 +43,6 @@
           "features": {
             "type": "array",
             "items": {
-              "required": [],
               "properties": {}
             }
           },

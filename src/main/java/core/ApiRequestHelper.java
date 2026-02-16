@@ -5,6 +5,8 @@ import io.restassured.response.ValidatableResponse;
 import java.util.HashMap;
 import java.util.Map;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+
 public class ApiRequestHelper {
     private final RequestBuilder requestBuilder;
 
@@ -26,5 +28,9 @@ public class ApiRequestHelper {
 
     public ValidatableResponse post() {
         return requestBuilder.makeRequest("POST", null, null, new HashMap<>());
+    }
+
+    public void assertSchema(ValidatableResponse vr, String schemaFile) {
+        vr.assertThat().body(matchesJsonSchemaInClasspath(schemaFile));
     }
 }
