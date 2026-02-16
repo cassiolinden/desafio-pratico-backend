@@ -1,7 +1,7 @@
 package core;
 
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
@@ -17,7 +17,7 @@ public class RequestBuilder {
                 .header("Content-Type", "application/json");
     }
 
-    public Response makeRequest(String method, String endpoint, Map<String, Object> body, Map<String, String> headers) {
+    public ValidatableResponse makeRequest(String method, Object body, Map<String, String> headers, Map<String, Object> pathParams) {
         RequestSpecification request = buildRequest();
 
         if (body != null) {
@@ -28,11 +28,15 @@ public class RequestBuilder {
             request.headers(headers);
         }
 
+        if (!pathParams.isEmpty()){
+            request.pathParams(pathParams);
+        }
+
         return switch (method.toUpperCase()) {
-            case "GET" -> request.log().all().get(endpoint).then().log().all().extract().response();
-            case "POST" -> request.log().all().post(endpoint).then().log().all().extract().response();
-            case "PUT" -> request.log().all().put(endpoint).then().log().all().extract().response();
-            case "PATCH" -> request.log().all().patch(endpoint).then().log().all().extract().response();
+            case "GET" -> request.log().all().get().then().log().all();
+            case "POST" -> request.log().all().post().then().log().all();
+            case "PUT" -> request.log().all().put().then().log().all();
+            case "PATCH" -> request.log().all().patch().then().log().all();
             default -> throw new IllegalArgumentException("Método HTTP não suportado: " + method);
         };
     }

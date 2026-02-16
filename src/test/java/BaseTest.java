@@ -1,16 +1,20 @@
 import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.http.ContentType;
-import org.hamcrest.Matchers;
-import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest {
-    @BeforeEach
-    void setup(){
+    void setBasePath(String basePath){
         RestAssured.baseURI = "http://localhost";
-        RestAssured.port = 3004;
-        RestAssured.basePath = "/";
+        RestAssured.basePath = basePath;
+
+        switch (basePath){
+            case "/booking" -> RestAssured.port = 3000;
+            case "/room" -> RestAssured.port = 3001;
+            case "/branding" -> RestAssured.port = 3002;
+            case "/auth/login" -> RestAssured.port = 3004;
+            case "/auth/validate" -> RestAssured.port = 3004;
+            case "/auth/logout" -> RestAssured.port = 3004;
+            case "/report" -> RestAssured.port = 3005;
+            case "/message" -> RestAssured.port = 3006;
+        }
 
         /*
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();

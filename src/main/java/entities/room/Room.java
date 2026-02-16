@@ -1,5 +1,11 @@
 package entities.room;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.Arrays;
+import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Room {
     private int roomid;
     private String roomName;
@@ -9,12 +15,14 @@ public class Room {
     private String description;
     private String[] features;
     private int roomPrice;
+    private List<Room> rooms;
 
     // Constructors
     public Room() {}
 
-    public Room(String roomName, String type, boolean accessible, String image, 
+    public Room(int roomid, String roomName, String type, boolean accessible, String image,
                 String description, String[] features, int roomPrice) {
+        this.roomid = roomid;
         this.roomName = roomName;
         this.type = type;
         this.accessible = accessible;
@@ -48,4 +56,26 @@ public class Room {
 
     public int getRoomPrice() { return roomPrice; }
     public void setRoomPrice(int roomPrice) { this.roomPrice = roomPrice; }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomid=" + roomid +
+                ", roomName='" + roomName + '\'' +
+                ", type='" + type + '\'' +
+                ", accessible=" + accessible +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", features=" + Arrays.toString(features) +
+                ", roomPrice=" + roomPrice +
+                '}';
+    }
 }

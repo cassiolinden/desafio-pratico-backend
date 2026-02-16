@@ -1,8 +1,7 @@
 package entities.auth;
 
 import core.ApiRequestHelper;
-
-import java.util.HashMap;
+import io.restassured.RestAssured;
 
 public class Auth {
     private String username;
@@ -23,9 +22,11 @@ public class Auth {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public String getCookieToken(HashMap<String, Object> body){
+    public String getCookieToken(Auth auth){
+        RestAssured.basePath = "/auth/login";
+        RestAssured.port = 3004;
         ApiRequestHelper request = new ApiRequestHelper();
-        return request.post("/auth/login", body).getCookie("token");
+        return request.post(auth).extract().cookie("token");
     }
 
 }
