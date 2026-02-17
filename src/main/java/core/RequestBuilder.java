@@ -17,7 +17,7 @@ public class RequestBuilder {
                 .header("Content-Type", "application/json");
     }
 
-    public ValidatableResponse makeRequest(String method, Object body, Map<String, String> headers, Map<String, String> params) {
+    public ValidatableResponse makeRequest(String method, Object body, Map<String, String> headers, Map<String, String> params, Map<String, String> cookie) {
         RequestSpecification request = buildRequest();
 
         if (body != null) {
@@ -30,6 +30,10 @@ public class RequestBuilder {
 
         if (!params.isEmpty()){
             request.params(params);
+        }
+
+        if(cookie != null){
+            request.cookies(cookie);
         }
 
         return switch (method.toUpperCase()) {

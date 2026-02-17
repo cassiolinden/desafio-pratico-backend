@@ -1,11 +1,14 @@
 package entities.room;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 
 import java.util.Arrays;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreType
 public class Room {
     private int roomid;
     private String roomName;
@@ -15,6 +18,7 @@ public class Room {
     private String description;
     private String[] features;
     private int roomPrice;
+    @JsonIgnore
     private List<Room> rooms;
 
     // Constructors
@@ -55,8 +59,10 @@ public class Room {
     public void setFeatures(String[] features) { this.features = features; }
 
     public int getRoomPrice() { return roomPrice; }
-    public void setRoomPrice(int roomPrice) { this.roomPrice = roomPrice; }
-
+    public Room setRoomPrice(int roomPrice) {
+        this.roomPrice = roomPrice;
+        return this;
+    }
     public List<Room> getRooms() {
         return rooms;
     }

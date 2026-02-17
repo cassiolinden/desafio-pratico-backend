@@ -15,23 +15,35 @@ public class ApiRequestHelper {
     }
 
     public ValidatableResponse get() {
-        return requestBuilder.makeRequest("GET", null, null, new HashMap<>());
+        return requestBuilder.makeRequest("GET", null, null, new HashMap<>(), null);
     }
 
     public ValidatableResponse get(Map<String, String> params){
-        return requestBuilder.makeRequest("GET", null, null, params);
+        return requestBuilder.makeRequest("GET", null, null, params, null);
     }
 
     public ValidatableResponse post(Map<String, Object> body, Map<String, String> headers) {
-        return requestBuilder.makeRequest("POST", body, headers, new HashMap<>());
+        return requestBuilder.makeRequest("POST", body, headers, new HashMap<>(), null);
     }
 
     public ValidatableResponse post(Object body) {
-        return requestBuilder.makeRequest("POST", body, null, new HashMap<>());
+        return requestBuilder.makeRequest("POST", body, null, new HashMap<>(), null);
+    }
+
+    public ValidatableResponse post(Object body, Map<String, String> cookie) {
+        return requestBuilder.makeRequest("POST", body, null, new HashMap<>(), cookie);
     }
 
     public ValidatableResponse post() {
-        return requestBuilder.makeRequest("POST", null, null, new HashMap<>());
+        return requestBuilder.makeRequest("POST", null, null, new HashMap<>(), null);
+    }
+
+    public ValidatableResponse put(Object body, Map<String, String> cookie) {
+        return requestBuilder.makeRequest("PUT", body, null, new HashMap<>(), cookie);
+    }
+
+    public ValidatableResponse put(Object body) {
+        return requestBuilder.makeRequest("PUT", body, null, new HashMap<>(), null);
     }
 
     public void assertSchema(ValidatableResponse vr, String schemaFile) {

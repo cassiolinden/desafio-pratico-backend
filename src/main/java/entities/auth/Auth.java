@@ -18,6 +18,14 @@ public class Auth {
 
     public void setPassword(String password) { this.password = password; }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public String getToken(Auth auth){
         RestAssured.basePath = "/auth/login";
         ApiRequestHelper request = new ApiRequestHelper();
