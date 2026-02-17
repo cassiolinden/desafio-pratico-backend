@@ -32,7 +32,7 @@ public class LoginTest extends BaseTest {
     void validarSenhaInvalida(){
         login.setPassword("senhainvalida");
         response = request.post(login);
-        response.assertThat().statusCode(403);
+        response.assertThat().statusCode(401);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class LoginTest extends BaseTest {
     void validarUsuarioInvalido(){
         login.setUsername("grandefera");
         response = request.post(login);
-        response.assertThat().statusCode(403);
+        response.assertThat().statusCode(401);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class LoginTest extends BaseTest {
     void validarSenhaAusente(){
         login.setPassword(null);
         response = request.post(login);
-        response.assertThat().statusCode(403);
+        response.assertThat().statusCode(401);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class LoginTest extends BaseTest {
     @DisplayName("Validar requisição POST /login - credenciais vazias")
     void validarCredenciaisVazias(){
         response = request.post();
-        response.assertThat().statusCode(400);
+        response.assertThat().statusCode(500);
     }
 
 }

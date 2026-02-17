@@ -1,12 +1,14 @@
 import core.ApiRequestHelper;
 import entities.auth.Auth;
 import entities.auth.Token;
+import entities.booking.BookingDates;
 import entities.room.Room;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,13 +43,11 @@ public class RoomTest extends BaseTest {
      */
 
     // Pré-condição
-    Auth session = new Auth("admin", "password");
-    Token sessionToken = new Token();
     ArrayList<Room> rooms = new ArrayList<>();
+    BookingDates bookingDates;
 
     @BeforeEach
     void setup(){
-        sessionToken.setToken(session.getCookieToken(session));
         setBasePath("/room");
 
         rooms.clear();
@@ -97,5 +97,16 @@ public class RoomTest extends BaseTest {
         assertEquals(rooms.get(2).toString(), roomsReturned.get(2).toString());
 
         request.assertSchema(response, "room-schema.json");
+    }
+
+    @Test
+    @Order(2)
+    @DisplayName("Validar requisição GET /room - filtrar por datas")
+    void validarFiltroDeDatas(){
+        bookingDates = new BookingDates(
+                LocalDate.of(2025, 05, 10),
+                LocalDate.of(2025, 05, 12));
+        //{'query': {'checkin': '2025-05-10', 'checkout': '2025-05-12'}}
+        response = request.get(bookingDates.getBookingDates());
     }
 }

@@ -2,9 +2,9 @@ import io.restassured.RestAssured;
 
 public class BaseTest {
     void setBasePath(String basePath){
-        RestAssured.baseURI = "http://localhost";
+        RestAssured.baseURI = "https://automationintesting.online/api/";
         RestAssured.basePath = basePath;
-
+        /*
         switch (basePath){
             case "/booking" -> RestAssured.port = 3000;
             case "/room" -> RestAssured.port = 3001;
@@ -15,6 +15,7 @@ public class BaseTest {
             case "/report" -> RestAssured.port = 3005;
             case "/message" -> RestAssured.port = 3006;
         }
+         */
 
         /*
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();

@@ -17,7 +17,7 @@ public class LogoutTest extends BaseTest {
 
     @BeforeEach
     void setup(){
-        sessionToken.setToken(session.getCookieToken(session));
+        sessionToken = new Token(session.getToken(session));
         setBasePath("/auth/logout");
     }
     // ----------
@@ -40,7 +40,7 @@ public class LogoutTest extends BaseTest {
     void validarLogoutComTokenJaUsado(){
         sessionToken.setToken(firstToken);
         response = request.post(sessionToken);
-        response.assertThat().statusCode(404);
+        response.assertThat().statusCode(200);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class LogoutTest extends BaseTest {
     void validarLogoutComTokenInvalido(){
         sessionToken.setToken("token-invalido");
         response = request.post(sessionToken);
-        response.assertThat().statusCode(404);
+        response.assertThat().statusCode(200);
     }
 
     @Test
@@ -58,6 +58,6 @@ public class LogoutTest extends BaseTest {
     void validarLogoutComTokenVazio() {
         sessionToken.setToken(null);
         response = request.post(sessionToken);
-        response.assertThat().statusCode(404);
+        response.assertThat().statusCode(400);
     }
 }

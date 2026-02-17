@@ -17,7 +17,7 @@ public class RequestBuilder {
                 .header("Content-Type", "application/json");
     }
 
-    public ValidatableResponse makeRequest(String method, Object body, Map<String, String> headers, Map<String, Object> pathParams) {
+    public ValidatableResponse makeRequest(String method, Object body, Map<String, String> headers, Map<String, String> params) {
         RequestSpecification request = buildRequest();
 
         if (body != null) {
@@ -28,8 +28,8 @@ public class RequestBuilder {
             request.headers(headers);
         }
 
-        if (!pathParams.isEmpty()){
-            request.pathParams(pathParams);
+        if (!params.isEmpty()){
+            request.params(params);
         }
 
         return switch (method.toUpperCase()) {

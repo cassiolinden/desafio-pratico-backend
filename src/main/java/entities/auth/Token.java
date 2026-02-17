@@ -14,17 +14,9 @@ public class Token {
         this.expiry = createExpiryTimestamp();
     }
 
-    public Token(String token, Date expiry) {
-        this.token = token;
-        this.expiry = expiry;
-    }
-
     // Getters and Setters
     public String getToken() { return token; }
     public void setToken(String token) { this.token = token; }
-
-    public Date getExpiry() { return expiry; }
-    public void setExpiry(Date expiry) { this.expiry = expiry; }
 
     private Date createExpiryTimestamp() {
         java.util.Calendar cal = java.util.Calendar.getInstance();

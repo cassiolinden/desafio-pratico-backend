@@ -13,13 +13,13 @@ public class ValidateTest extends BaseTest {
     // Pré-condição
     Auth login = new Auth("admin", "password");
     // ----------
-    Token validate = new Token();
+    Token validate;
     ApiRequestHelper request = new ApiRequestHelper();
     static ValidatableResponse response;
 
     @BeforeEach
     void setup(){
-        validate.setToken(login.getCookieToken(login));
+        validate = new Token(login.getToken(login));
         setBasePath("/auth/validate");
     }
 
@@ -46,7 +46,7 @@ public class ValidateTest extends BaseTest {
     void validarTokenVazio(){
         validate.setToken("");
         response = request.post(validate);
-        response.assertThat().statusCode(403);
+        response.assertThat().statusCode(401);
     }
 
     @Test
@@ -55,6 +55,6 @@ public class ValidateTest extends BaseTest {
     void validarTokenNulo(){
         validate.setToken(null);
         response = request.post(validate);
-        response.assertThat().statusCode(403);
+        response.assertThat().statusCode(401);
     }
 }

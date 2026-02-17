@@ -18,6 +18,10 @@ public class ApiRequestHelper {
         return requestBuilder.makeRequest("GET", null, null, new HashMap<>());
     }
 
+    public ValidatableResponse get(Map<String, String> params){
+        return requestBuilder.makeRequest("GET", null, null, params);
+    }
+
     public ValidatableResponse post(Map<String, Object> body, Map<String, String> headers) {
         return requestBuilder.makeRequest("POST", body, headers, new HashMap<>());
     }
