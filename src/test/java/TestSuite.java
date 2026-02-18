@@ -5,7 +5,8 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasses({
         LoginTest.class,
         ValidateTest.class,
-        LogoutTest.class
+        LogoutTest.class,
+        RoomTest.class
 })
 public class TestSuite extends BaseTest {
 }

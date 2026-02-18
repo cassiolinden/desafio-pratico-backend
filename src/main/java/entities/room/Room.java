@@ -18,7 +18,6 @@ public class Room {
     private String description;
     private String[] features;
     private int roomPrice;
-    @JsonIgnore
     private List<Room> rooms;
 
     // Constructors

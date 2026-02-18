@@ -37,10 +37,10 @@ public class RequestBuilder {
         }
 
         return switch (method.toUpperCase()) {
-            case "GET" -> request.log().all().get().then().log().all();
-            case "POST" -> request.log().all().post().then().log().all();
-            case "PUT" -> request.log().all().put().then().log().all();
-            case "PATCH" -> request.log().all().patch().then().log().all();
+            case "GET" -> request.get().then();
+            case "POST" -> request.post().then();
+            case "PUT" -> request.put().then();
+            case "DELETE" -> request.delete().then();
             default -> throw new IllegalArgumentException("Método HTTP não suportado: " + method);
         };
     }

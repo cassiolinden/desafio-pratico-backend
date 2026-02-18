@@ -46,6 +46,14 @@ public class ApiRequestHelper {
         return requestBuilder.makeRequest("PUT", body, null, new HashMap<>(), null);
     }
 
+    public ValidatableResponse delete(Map<String, String> cookie) {
+        return requestBuilder.makeRequest("DELETE", null, null, new HashMap<>(), cookie);
+    }
+
+    public ValidatableResponse delete() {
+        return requestBuilder.makeRequest("DELETE", null, null, new HashMap<>(), null);
+    }
+
     public void assertSchema(ValidatableResponse vr, String schemaFile) {
         vr.assertThat().body(matchesJsonSchemaInClasspath(schemaFile));
     }
