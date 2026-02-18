@@ -1,4 +1,4 @@
-name: Allure Report
+name: CI - execução no Rest-Assured e relatório no Allure
 
 on:
   push:
