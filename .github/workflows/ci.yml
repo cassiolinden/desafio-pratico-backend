@@ -5,7 +5,13 @@ on:
     branches: [ master, main ]
   pull_request:
     branches: [ master, main ]
-  workflow_dispatch:
+  workflow_run:
+  schedule:
+    - cron: "0 8 * * MON"
+    - cron: "0 8 * * TUE"
+    - cron: "0 8 * * WED"
+    - cron: "0 8 * * THU"
+    - cron: "0 8 * * FRI"
 
 permissions:
   contents: read
