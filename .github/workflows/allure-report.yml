@@ -7,6 +7,12 @@ on:
     branches: [ master, main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
