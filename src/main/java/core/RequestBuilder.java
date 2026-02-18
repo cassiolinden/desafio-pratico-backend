@@ -3,6 +3,7 @@ package core;
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import io.qameta.allure.restassured.AllureRestAssured;
 
 import java.util.Map;
 
@@ -14,6 +15,7 @@ public class RequestBuilder {
 
     private RequestSpecification buildRequest() {
         return RestAssured.given()
+                .filter(new AllureRestAssured())
                 .header("Content-Type", "application/json");
     }
 
