@@ -1,0 +1,1 @@
+{"uuid":"b977edd0-586a-4b9d-89c4-b6bcba7992b7","name":"Validar requisição DELETE /room/{id} - sem token de autenticação","children":["bd26fe82-c54f-49da-8140-8d332c8716cf"],"befores":[],"afters":[],"start":1771427601542,"stop":1771427602240}

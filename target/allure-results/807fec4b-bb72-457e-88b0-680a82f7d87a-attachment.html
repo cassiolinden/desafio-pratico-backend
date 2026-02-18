@@ -1,0 +1,53 @@
+<div>PUT to https://automationintesting.online/api/room/3</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;roomid&quot;: 3,
+    &quot;roomName&quot;: &quot;103&quot;,
+    &quot;type&quot;: &quot;Suite&quot;,
+    &quot;accessible&quot;: true,
+    &quot;image&quot;: &quot;/images/room3.jpg&quot;,
+    &quot;description&quot;: &quot;Etiam metus metus, fringilla ac sagittis id, consequat vel neque. Nunc commodo quis nisl nec posuere. Etiam at accumsan ex. &quot;,
+    &quot;features&quot;: [
+        &quot;Radio&quot;,
+        &quot;WiFi&quot;,
+        &quot;Safe&quot;
+    ],
+    &quot;roomPrice&quot;: 100,
+    &quot;rooms&quot;: null
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+    <h4>Cookies</h4>
+    <div>
+            <div>token: GPSGvqv87J0QxvHH</div>
+    </div>
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X PUT &#39;https://automationintesting.online/api/room/3&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -b &#39;token=GPSGvqv87J0QxvHH&#39; -d &#39;{
+    &quot;roomid&quot;: 3,
+    &quot;roomName&quot;: &quot;103&quot;,
+    &quot;type&quot;: &quot;Suite&quot;,
+    &quot;accessible&quot;: true,
+    &quot;image&quot;: &quot;/images/room3.jpg&quot;,
+    &quot;description&quot;: &quot;Etiam metus metus, fringilla ac sagittis id, consequat vel neque. Nunc commodo quis nisl nec posuere. Etiam at accumsan ex. &quot;,
+    &quot;features&quot;: [
+        &quot;Radio&quot;,
+        &quot;WiFi&quot;,
+        &quot;Safe&quot;
+    ],
+    &quot;roomPrice&quot;: 100,
+    &quot;rooms&quot;: null
+}&#39;
+    </div>
+

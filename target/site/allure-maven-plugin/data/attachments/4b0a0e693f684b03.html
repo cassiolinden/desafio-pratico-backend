@@ -1,0 +1,49 @@
+<div>POST to https://automationintesting.online/api/room</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;roomid&quot;: 1,
+    &quot;roomName&quot;: &quot;101&quot;,
+    &quot;type&quot;: &quot;Single&quot;,
+    &quot;accessible&quot;: true,
+    &quot;image&quot;: &quot;/images/room1.jpg&quot;,
+    &quot;description&quot;: &quot;Aenean porttitor mauris sit amet lacinia molestie. In posuere accumsan aliquet. Maecenas sit amet nisl massa. Interdum et malesuada fames ac ante.&quot;,
+    &quot;features&quot;: [
+        &quot;TV&quot;,
+        &quot;WiFi&quot;,
+        &quot;Safe&quot;
+    ],
+    &quot;roomPrice&quot;: 100,
+    &quot;rooms&quot;: null
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://automationintesting.online/api/room&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;roomid&quot;: 1,
+    &quot;roomName&quot;: &quot;101&quot;,
+    &quot;type&quot;: &quot;Single&quot;,
+    &quot;accessible&quot;: true,
+    &quot;image&quot;: &quot;/images/room1.jpg&quot;,
+    &quot;description&quot;: &quot;Aenean porttitor mauris sit amet lacinia molestie. In posuere accumsan aliquet. Maecenas sit amet nisl massa. Interdum et malesuada fames ac ante.&quot;,
+    &quot;features&quot;: [
+        &quot;TV&quot;,
+        &quot;WiFi&quot;,
+        &quot;Safe&quot;
+    ],
+    &quot;roomPrice&quot;: 100,
+    &quot;rooms&quot;: null
+}&#39;
+    </div>
+
