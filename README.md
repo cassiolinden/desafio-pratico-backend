@@ -24,9 +24,6 @@ git clone https://github.com/cassiolinden/desafio-pratico-frontend.git
 ```bash
 # Limpa e roda os testes (headless por padrão via config.properties)
 mvn clean test
-
-# Alternativamente, pode ser rodado com diferentes propriedades via linha de comando
-mvn clean test -Dbrowser=chrome -Dheadless=true
 ```
 
 4) Para visualizar o relatório da execução, rode os seguintes comandos:
