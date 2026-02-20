@@ -1,8 +1,6 @@
 # Desafio prático de automação de testes
 ## Camada back-end
 
-------
-
 #### Ferramentas utilizadas
 - Java 17;
 - Maven 3.0;
@@ -22,17 +20,12 @@ git clone https://github.com/cassiolinden/desafio-pratico-frontend.git
 3) Ainda na mesma pasta, para executar os testes, você precisa rodar os seguintes comandos:
 
 ```bash
-# Limpa e roda os testes (headless por padrão via config.properties)
 mvn clean test
-
-# Alternativamente, pode ser rodado com diferentes propriedades via linha de comando
-mvn clean test -Dbrowser=chrome -Dheadless=true
 ```
 
 4) Para visualizar o relatório da execução, rode os seguintes comandos:
 
 ```bash
-# Gerar relatório Allure (requer Allure CLI instalado)
 mvn allure:report
 mvn allure:serve
 ```
