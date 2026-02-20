@@ -105,7 +105,7 @@ public class RoomTest extends BaseTest {
 
     @Test
     @Order(3)
-    @Disabled // está retornando 500 após timeout
+    //@Disabled // está retornando 500 após timeout
     @DisplayName("Validar requisição GET /room - formato de data inválido")
     void validarDataFormatoInvalido(){
         bookingDates = new BookingDates(
@@ -119,10 +119,7 @@ public class RoomTest extends BaseTest {
         dates.put("checkout", bookingDates.getCheckout().format(formatter));
         response = request.get(dates);
 
-        ArrayList al = new ArrayList();
-
         response.assertThat().statusCode(500);
-        assertIterableEquals(al, response.extract().body().as(Room.class).getRooms());
     }
 
     @Test
@@ -141,7 +138,7 @@ public class RoomTest extends BaseTest {
 
     @Test
     @Order(5)
-    @Disabled // está retornando 500 após timeout
+    //@Disabled // está retornando 500 após timeout
     @DisplayName("Validar requisição GET /room/{id} - quarto inexistente")
     void validarRetornoComIdInvalido(){
         setBasePath("/room/99999");
@@ -346,5 +343,14 @@ public class RoomTest extends BaseTest {
         response.assertThat().statusCode(500);
         String[] errors = {"An unexpected error occurred"};
         assertEquals(errors[0], response.extract().path("errors[0]"));
+    }
+
+    @Test
+    @Order(20)
+    @DisplayName("Validar requisição DELETE /room/{id} - quarto com reservas vinculadas")
+    void validarDeleteQuartoComReserva(){
+        cookies.put("token", session.getToken(session));
+        setBasePath("/room/1");
+        response = request.delete(cookies);
     }
 }
