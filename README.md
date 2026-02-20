@@ -26,7 +26,6 @@ mvn clean test
 4) Para visualizar o relatório da execução, rode os seguintes comandos:
 
 ```bash
-# Gerar relatório Allure (requer Allure CLI instalado)
 mvn allure:report
 mvn allure:serve
 ```
